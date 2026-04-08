@@ -137,6 +137,24 @@ export const sections: Section[] = [
     ],
   },
   {
+    id: "overview/downloads",
+    group: "overview",
+    title: "Downloads",
+    summary:
+      "Starter packages and bootstrap archives for getting up and running quickly.",
+    blocks: [
+      {
+        type: "links",
+        items: [
+          {
+            label: "Production Setup",
+            href: "/downloads/codex-universal-bootstrap.zip",
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "tutorials/global-setup",
     group: "tutorials",
     title: "Global setup",
