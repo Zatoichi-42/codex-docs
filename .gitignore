@@ -40,3 +40,5 @@ Thumbs.db
 
 # local artifacts
 *.log
+.vercel
+.env*.local

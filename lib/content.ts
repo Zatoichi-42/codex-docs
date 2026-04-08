@@ -20,6 +20,11 @@ export type Section = {
   group: SectionGroup;
   title: string;
   summary: string;
+  summarySuffixLink?: {
+    prefix: string;
+    item: LinkItem;
+    suffix?: string;
+  };
   blocks: Block[];
 };
 
@@ -38,6 +43,15 @@ export const sections: Section[] = [
     title: 'Codex Guidance',
     summary:
       'A native Codex translation of the Claude guidance model. Same single-page docs rhythm, but only sections that map cleanly to AGENTS.md, hooks, rules, config, skills, subagents, approvals, sandboxing, and built-in commands.',
+    summarySuffixLink: {
+      prefix: ' by ',
+      item: {
+        label: 'Cloud9 Payment Gateway',
+        href: 'https://c9pg.com',
+        external: true,
+      },
+      suffix: ' - your agentic payment partner',
+    },
     blocks: [
       {
         type: 'p',

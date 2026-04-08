@@ -32,6 +32,27 @@ function LinkList({ items }: { items: LinkItem[] }) {
   );
 }
 
+function SummaryText({ section, includeLink = true }: { section: Section; includeLink?: boolean }) {
+  return (
+    <>
+      {section.summary}
+      {includeLink && section.summarySuffixLink ? (
+        <>
+          {section.summarySuffixLink.prefix}
+          <a
+            href={section.summarySuffixLink.item.href}
+            target={section.summarySuffixLink.item.external ? '_blank' : undefined}
+            rel={section.summarySuffixLink.item.external ? 'noreferrer' : undefined}
+          >
+            {section.summarySuffixLink.item.label}
+          </a>
+          {section.summarySuffixLink.suffix ?? null}
+        </>
+      ) : null}
+    </>
+  );
+}
+
 function BlockRenderer({ block }: { block: Block }) {
   if (block.type === 'p') return <p className="copy">{block.text}</p>;
 
@@ -123,7 +144,7 @@ function Sidebar({ activeSection }: { activeSection: Section }) {
               return (
                 <a key={section.id} href={`#${section.id}`} className={isActive ? 'nav-link active' : 'nav-link'}>
                   <span>{section.title}</span>
-                  <small>{section.summary}</small>
+                  <small><SummaryText section={section} includeLink={false} /></small>
                 </a>
               );
             })}
@@ -153,7 +174,7 @@ export function DocsApp() {
         <header className="hero">
           <div className="eyebrow">{activeSection.group}</div>
           <h1>{activeSection.title}</h1>
-          <p>{activeSection.summary}</p>
+          <p><SummaryText section={activeSection} /></p>
         </header>
 
         <div className="local-nav" aria-label="Section navigation">
